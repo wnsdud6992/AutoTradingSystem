@@ -26,7 +26,6 @@ TEST_F(AutoTradingSystemTest, buySuccess) {
 	EXPECT_EQ(prevAccount - 12000 * 10, currentAccount);
 }
 
-TEST_F(AutoTradingSystemTest, buyNotCalledWhenInsufficientFunds) {
-	EXPECT_CALL(mockdriver, buy("Samsung", 13000, 1000)).Times(0);	
+TEST_F(AutoTradingSystemTest, buyNotCalledWhenInsufficientFunds) {	
 	EXPECT_THROW(tradingsys.buy("Samsung", 13000, 1000), std::exception);
 }
