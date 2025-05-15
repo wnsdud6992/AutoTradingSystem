@@ -32,17 +32,8 @@ TEST_F(AutoTradingSystemTest, buySuccess) {
 }
 
 TEST_F(AutoTradingSystemTest, buyNotCalledWhenInsufficientFunds) {
-	EXPECT_CALL(mockdriver, buy("Samsung", 13000, 1000)).Times(0);
-	int prevQuntity = tradingsys.getStockInfo()["Samsung"].second;
-	int prevAccount = tradingsys.getAccout();
-
-	tradingsys.buy("Samsung", 13000, 1000);
-
-	int currentQuntity = tradingsys.getStockInfo()["Samsung"].second;
-	EXPECT_EQ(prevQuntity, currentQuntity);
- 
-	int currentAccount = tradingsys.getAccout();
-	EXPECT_EQ(prevAccount, currentAccount);
+	EXPECT_CALL(mockdriver, buy("Samsung", 13000, 1000)).Times(0);	
+	EXPECT_THROW(tradingsys.buy("Samsung", 13000, 1000), std::exception);
 }
 
 TEST_F(AutoTradingSystemTest, sellSuccess) {

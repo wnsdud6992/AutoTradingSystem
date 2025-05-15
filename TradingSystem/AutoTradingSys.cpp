@@ -1,4 +1,5 @@
 #include "AutoTradingSys.h"
+#include "iostream"
 
 AutoTradingSys::AutoTradingSys(IStockerBrockerDriver* driver_, int account) : driver(driver_), userAccount(account)
 {
@@ -7,7 +8,10 @@ bool AutoTradingSys::login(std::string id, int password) {
 	return false;
 }
 void AutoTradingSys::buy(std::string code, int price, int num) {
-	if (userAccount < price * num) return;
+	if (userAccount < price * num) {
+		std::cout << "not enough money.\n";
+		throw std::exception();
+	}
 
 	driver->buy(code, price ,num);
 	userAccount -= price * num;
