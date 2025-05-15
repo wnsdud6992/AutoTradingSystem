@@ -1,5 +1,4 @@
 #pragma once
-
 #include "CurrentPrice.h"
 
 class IStockerBrockerDriver {

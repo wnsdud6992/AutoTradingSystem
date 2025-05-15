@@ -18,6 +18,5 @@ private:
 	IStockerBrockerDriver* driver;
 	std::string id;
 	std::unordered_map < std::string, std::pair<int, int>> stockInfo; // key : stock code   value : {price, num}
-
 	int userAccount = 0;
 };

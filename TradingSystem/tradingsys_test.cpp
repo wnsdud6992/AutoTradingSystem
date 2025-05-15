@@ -13,8 +13,8 @@ private:
 };
 
 TEST_F(AutoTradingSystemTest, loginSuccess) {
-	EXPECT_CALL(mockdriver, login("CÁ¶", 123456)).Times(1);
-	EXPECT_TRUE(tradingsys.login("CÁ¶", 123456));
+	EXPECT_CALL(mockdriver, login("Cï¿½ï¿½", 123456)).Times(1);
+	EXPECT_TRUE(tradingsys.login("Cï¿½ï¿½", 123456));
 }
 
 TEST_F(AutoTradingSystemTest, buySuccess) {
