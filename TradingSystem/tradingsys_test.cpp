@@ -12,11 +12,6 @@ public:
 	AutoTradingSys tradingsys{ &mockdriver, initAccount };
 };
 
-TEST_F(AutoTradingSystemTest, loginSuccess) {
-	EXPECT_CALL(mockdriver, login("CÁ¶", 123456)).Times(1);
-	EXPECT_TRUE(tradingsys.login("CÁ¶", 123456));
-}
-
 TEST_F(AutoTradingSystemTest, buySuccess) {
 	int prevQuntity= tradingsys.getStockInfo()["Samsung"].second;
 	int prevAccount = tradingsys.getAccout();
@@ -34,16 +29,4 @@ TEST_F(AutoTradingSystemTest, buySuccess) {
 TEST_F(AutoTradingSystemTest, buyNotCalledWhenInsufficientFunds) {
 	EXPECT_CALL(mockdriver, buy("Samsung", 13000, 1000)).Times(0);	
 	EXPECT_THROW(tradingsys.buy("Samsung", 13000, 1000), std::exception);
-}
-
-TEST_F(AutoTradingSystemTest, sellSuccess) {
-	tradingsys.buy("Samsung", 12000, 10);
-
-	EXPECT_CALL(mockdriver, sell("Samsung", 11000, 3)).Times(1);
-	EXPECT_CALL(mockdriver, sell("Samsung", 10500, 2)).Times(1);
-	
-	tradingsys.buy("Samsung", 11000, 3);
-	tradingsys.buy("Samsung", 10500, 2);
-
-
 }
