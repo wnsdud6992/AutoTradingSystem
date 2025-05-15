@@ -35,3 +35,13 @@ TEST_F(AutoTradingSystemTest, getPriceSuccess) {
 	 .WillRepeatedly(Return(12000));
 	EXPECT_EQ(12000, tradingsys.getPrice("Samsung"));
 }
+TEST_F(AutoTradingSystemTest, getPriceFail) {
+	EXPECT_CALL(mockdriver, getPrice("Samsung")).Times(1)
+		.WillOnce(Return(0));
+	try {
+		tradingsys.getPrice("Samsung");
+	}
+	catch (std::runtime_error e) {
+		EXPECT_EQ(std::string{ e.what() }, std::string{ "invaild code, this code is price 0" });
+	}
+}
