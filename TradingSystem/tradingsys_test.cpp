@@ -29,3 +29,8 @@ TEST_F(AutoTradingSystemTest, sellSuccess) {
 	tradingsys.buy("Samsung", 11000, 3);
 	tradingsys.buy("Samsung", 10500, 2);
 }
+
+TEST_F(AutoTradingSystemTest, getPriceSuccess) {
+	EXPECT_CALL(mockdriver, getPrice("Samsung")).Times(1);
+	EXPECT_EQ(12000, mockdriver.getPrice("Samsung"));
+}
