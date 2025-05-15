@@ -33,5 +33,5 @@ TEST_F(AutoTradingSystemTest, DISABLED_sellSuccess) {
 TEST_F(AutoTradingSystemTest, getPriceSuccess) {
 	EXPECT_CALL(mockdriver, getPrice("Samsung")).Times(1)
 	 .WillRepeatedly(Return(12000));
-	EXPECT_EQ(12000, mockdriver.getPrice("Samsung"));
+	EXPECT_EQ(12000, tradingsys.getPrice("Samsung"));
 }
