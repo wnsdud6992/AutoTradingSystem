@@ -12,8 +12,10 @@ public:
 
 	void buyNiceTiming(std::string code, int price);
 	void sellNiceTiming(std::string code, int num);
+
+
 private:
 	IStockerBrockerDriver* driver;
 	std::string id;
-
+	std::unordered_map < std::string, std::pair<int, int>> stockInfo; // key : stock code   value : {price, num}
 };
