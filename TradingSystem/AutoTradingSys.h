@@ -3,7 +3,7 @@
 
 class AutoTradingSys {
 public:
-	AutoTradingSys(IStockerBrockerDriver* driver_);
+	AutoTradingSys(IStockerBrockerDriver* driver_, int account);
 
 	bool login(std::string id, int password);
 	void buy(std::string code, int price, int num);
@@ -18,4 +18,5 @@ private:
 	IStockerBrockerDriver* driver;
 	std::string id;
 	std::unordered_map < std::string, std::pair<int, int>> stockInfo; // key : stock code   value : {price, num}
+	int userAccount = 0;
 };

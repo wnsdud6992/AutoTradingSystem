@@ -140,6 +140,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AutoTradingSys.h" />
+    <ClInclude Include="CurrentPrice.h" />
     <ClInclude Include="IStockerBrockerDriver.h" />
     <ClInclude Include="KiwerDriver.h" />
     <ClInclude Include="MockDriver.h" />

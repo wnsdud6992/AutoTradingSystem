@@ -59,6 +59,9 @@
     <ClInclude Include="AutoTradingSys.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="CurrentPrice.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
     <ClInclude Include="KiwerDriver.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
