@@ -1,5 +1,4 @@
 #include "AutoTradingSys.h"
-#include <iostream>
 AutoTradingSys::AutoTradingSys(IStockerBrockerDriver* driver_) : driver(driver_)
 {
 }
