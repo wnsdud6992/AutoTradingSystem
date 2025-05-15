@@ -37,8 +37,8 @@ TEST_F(AutoTradingSystemTest, getPriceSuccess) {
 	 .WillRepeatedly(Return(expectPrice));
 	EXPECT_EQ(expectPrice, tradingsys.getPrice("Samsung"));
 }
-TEST_F(AutoTradingSystemTest, getPriceFail) {
-	int INVAILD_PRICE = 0;
+TEST_F(AutoTradingSystemTest, getPriceInvaildPriceExceptionReturn) {
+	const int INVAILD_PRICE = 0;
 	EXPECT_CALL(mockdriver, getPrice("Samsung")).Times(1)
 		.WillOnce(Return(INVAILD_PRICE));
 	try {
