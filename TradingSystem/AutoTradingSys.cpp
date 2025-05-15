@@ -1,10 +1,24 @@
 #include "AutoTradingSys.h"
-
+#include <iostream>
 AutoTradingSys::AutoTradingSys(IStockerBrockerDriver* driver_) : driver(driver_)
 {
 }
 bool AutoTradingSys::login(std::string id, int password) {
+	if (id.empty() || password <= 0)
+		return false;
+
+	driver->login(id, password);
+
+	if (driver->getID() == id && driver->getPwd() == password) {
+		return true;
+	}
 	return false;
+}
+std::string AutoTradingSys::getID() {
+	return this->id;
+}
+int AutoTradingSys::getPwd() {
+	return this->pwd;
 }
 void AutoTradingSys::buy(std::string code, int price, int num) {
 
