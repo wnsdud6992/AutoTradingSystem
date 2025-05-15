@@ -7,6 +7,7 @@ class AutoTradingSystemTest : public Test {
 public:
 	MockDriver mockdriver;
 	AutoTradingSys tradingsys{ &mockdriver, initAccount };
+	
 private:
 	const int initAccount = 1'000'000;
 };
@@ -31,13 +32,15 @@ TEST_F(AutoTradingSystemTest, DISABLED_sellSuccess) {
 }
 
 TEST_F(AutoTradingSystemTest, getPriceSuccess) {
+	int expectPrice = currentPrice["samsung"];
 	EXPECT_CALL(mockdriver, getPrice("Samsung")).Times(1)
-	 .WillRepeatedly(Return(12000));
-	EXPECT_EQ(12000, tradingsys.getPrice("Samsung"));
+	 .WillRepeatedly(Return(expectPrice));
+	EXPECT_EQ(expectPrice, tradingsys.getPrice("Samsung"));
 }
 TEST_F(AutoTradingSystemTest, getPriceFail) {
+	int INVAILD_PRICE = 0;
 	EXPECT_CALL(mockdriver, getPrice("Samsung")).Times(1)
-		.WillOnce(Return(0));
+		.WillOnce(Return(INVAILD_PRICE));
 	try {
 		tradingsys.getPrice("Samsung");
 	}
