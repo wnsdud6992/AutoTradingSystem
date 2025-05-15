@@ -13,7 +13,8 @@ void AutoTradingSys::sell(std::string code, int price, int num) {
 
 }
 int  AutoTradingSys::getPrice(std::string code) {
-	return 0;
+	int price  = driver->getPrice(code);
+	return price;
 }
 void AutoTradingSys::buyNiceTiming(std::string code, int price) {
 
