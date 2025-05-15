@@ -7,15 +7,17 @@ bool AutoTradingSys::login(std::string id, int password) {
 	return false;
 }
 void AutoTradingSys::buy(std::string code, int price, int num) {
+	if (userAccount < price * num) return;
+
 	driver->buy(code, price ,num);
+	userAccount -= price * num;
+
 	if (stockInfo.find(code) != stockInfo.end()) {
 		stockInfo[code].second += num;
 	}
 	else {
 		stockInfo.insert({ code, {price, num} });
 	}
-
-	userAccount += price * num;
 }
 void AutoTradingSys::sell(std::string code, int price, int num) {
 
