@@ -6,7 +6,9 @@ using namespace testing;
 class AutoTradingSystemTest : public Test {
 public:
 	MockDriver mockdriver;
-	AutoTradingSys tradingsys{ &mockdriver };
+	AutoTradingSys tradingsys{ &mockdriver, initAccount };
+private:
+	const int initAccount = 1'000'000;
 };
 
 TEST_F(AutoTradingSystemTest, loginSuccess) {
@@ -17,4 +19,13 @@ TEST_F(AutoTradingSystemTest, loginSuccess) {
 TEST_F(AutoTradingSystemTest, buySuccess) {
 	EXPECT_CALL(mockdriver, buy("Samsung", 12000, 10)).Times(1);
 	tradingsys.buy("Samsung", 12000, 10);
+}
+
+TEST_F(AutoTradingSystemTest, sellSuccess) {
+	tradingsys.buy("Samsung", 12000, 10);
+
+	EXPECT_CALL(mockdriver, sell("Samsung", 11000, 3)).Times(1);
+	EXPECT_CALL(mockdriver, sell("Samsung", 10500, 2)).Times(1);
+	tradingsys.buy("Samsung", 11000, 3);
+	tradingsys.buy("Samsung", 10500, 2);
 }

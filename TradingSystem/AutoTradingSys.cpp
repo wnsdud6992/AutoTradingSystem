@@ -1,6 +1,6 @@
 #include "AutoTradingSys.h"
 
-AutoTradingSys::AutoTradingSys(IStockerBrockerDriver* driver_) : driver(driver_)
+AutoTradingSys::AutoTradingSys(IStockerBrockerDriver* driver_, int account) : driver(driver_), userAccount(account)
 {
 }
 bool AutoTradingSys::login(std::string id, int password) {
