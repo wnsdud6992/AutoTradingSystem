@@ -12,17 +12,17 @@ private:
 	const int initAccount = 1'000'000;
 };
 
-TEST_F(AutoTradingSystemTest, DISABLED_loginSuccess) {
+TEST_F(AutoTradingSystemTest, loginSuccess) {
 	EXPECT_CALL(mockdriver, login("CÁ¶", 123456)).Times(1);
 	EXPECT_TRUE(tradingsys.login("CÁ¶", 123456));
 }
 
-TEST_F(AutoTradingSystemTest, DISABLED_buySuccess) {
+TEST_F(AutoTradingSystemTest, buySuccess) {
 	EXPECT_CALL(mockdriver, buy("Samsung", 12000, 10)).Times(1);
 	tradingsys.buy("Samsung", 12000, 10);
 }
 
-TEST_F(AutoTradingSystemTest, DISABLED_sellSuccess) {
+TEST_F(AutoTradingSystemTest, sellSuccess) {
 	tradingsys.buy("Samsung", 12000, 10);
 
 	EXPECT_CALL(mockdriver, sell("Samsung", 11000, 3)).Times(1);
