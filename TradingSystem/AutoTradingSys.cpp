@@ -20,27 +20,31 @@ void AutoTradingSys::buy(std::string code, int price, int num) {
 }
 
 void AutoTradingSys::sell(std::string code, int price, int num) {
+	//find stock
+	throwIfStockNotFound(code);
+
+	// stock exist
+	throwIfStockNotEnough(code, num);
+
+	//mock driver sell
+	driver->sell(code, price, num);
+}
+
+void AutoTradingSys::throwIfStockNotEnough(std::string& code, int num)
+{
+	if (stockInfo[code].second < num){
+		//	std::cout << "Stock not enough.\n";
+		throw std::exception();
+	}
+}
+
+void AutoTradingSys::throwIfStockNotFound(std::string& code)
+{
 	auto stock = stockInfo.find(code);
 	if (stock == stockInfo.end()) {
-		isSocktFound();
+		//	std::cout << "Stock not found.\n";
+		throw std::exception(); 
 	}
-	// stock exist
-	if (stockInfo[code].second < num) {
-		isStockEnough();
-	}
-	driver->sell(code, price, num);//mock driver sell
-}
-
-void AutoTradingSys::isStockEnough()
-{
-//	std::cout << "Stock not enough.\n";
-	throw std::exception();
-}
-
-void AutoTradingSys::isSocktFound()
-{
-//	std::cout << "Stock not found.\n";
-	throw std::exception();
 }
 
 int  AutoTradingSys::getPrice(std::string code) {

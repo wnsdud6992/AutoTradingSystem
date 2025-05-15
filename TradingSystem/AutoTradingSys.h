@@ -13,7 +13,10 @@ public:
 	bool login(std::string id, int password);
 	void buy(std::string code, int price, int num);
 	void sell(std::string code, int price, int num);
-	void isSocktEnough();
+	void throwIfStockNotEnough(std::string& code, int num);
+	void throwIfStockNotFound(std::string& code);
+	void isStockEnough();
+	void noSocktFound();
 	int getPrice(std::string code);
 
 	void buyNiceTiming(std::string code, int price);

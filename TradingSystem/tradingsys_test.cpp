@@ -46,4 +46,3 @@ TEST_F(AutoTradingSystemTest, sellFailBecuseOfNotEnoughQuantity) {
 	tradingsys.buy("samsung", 12000, 10);
 	EXPECT_THROW(tradingsys.sell("samsung", 11000, 11), std::exception);
 }
-
