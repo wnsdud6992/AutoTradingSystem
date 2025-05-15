@@ -1,6 +1,11 @@
 #pragma once
 #include "IStockerBrockerDriver.h"
 
+class SellFailExcept :public std::exception {
+public:
+	;
+};
+
 class AutoTradingSys {
 public:
 	AutoTradingSys(IStockerBrockerDriver* driver_, int account);
@@ -8,6 +13,7 @@ public:
 	bool login(std::string id, int password);
 	void buy(std::string code, int price, int num);
 	void sell(std::string code, int price, int num);
+	void isSocktEnough();
 	int getPrice(std::string code);
 
 	void buyNiceTiming(std::string code, int price);
