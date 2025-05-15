@@ -13,6 +13,8 @@ public:
 	void buyNiceTiming(std::string code, int price);
 	void sellNiceTiming(std::string code, int num);
 
+	int getAccout();
+	std::unordered_map < std::string, std::pair<int, int>> getStockInfo();
 
 private:
 	IStockerBrockerDriver* driver;
