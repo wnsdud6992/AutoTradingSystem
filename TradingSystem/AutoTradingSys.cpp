@@ -22,6 +22,7 @@ void AutoTradingSys::buy(std::string code, int price, int num) {
 	else {
 		stockInfo.insert({ code, {price, num} });
 	}
+
 }
 void AutoTradingSys::sell(std::string code, int price, int num) {
 
@@ -42,4 +43,5 @@ int AutoTradingSys::getAccout() {
 
 std::unordered_map < std::string, std::pair<int, int>> AutoTradingSys::getStockInfo() {
 	return stockInfo;
+
 }

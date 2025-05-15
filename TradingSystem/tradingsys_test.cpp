@@ -12,6 +12,11 @@ public:
 	AutoTradingSys tradingsys{ &mockdriver, initAccount };
 };
 
+TEST_F(AutoTradingSystemTest, loginSuccess) {
+	EXPECT_CALL(mockdriver, login("C��", 123456)).Times(1);
+	EXPECT_TRUE(tradingsys.login("C��", 123456));
+}
+
 TEST_F(AutoTradingSystemTest, buySuccess) {
 	int prevQuntity= tradingsys.getStockInfo()["Samsung"].second;
 	int prevAccount = tradingsys.getAccout();
